@@ -19,10 +19,32 @@ router.post("/sendrequest", async (req, res) => {
     const bodyData = req.body;
 
     // PARAMATERS
-    const targetURL = body.url;
-    const method = body.method;
-    const headers = body.headers;
-    const data = body.data;
+    const targetURL = bodyData.url;
+    const method = bodyData.method;
+    const headers = bodyData.headers;
+    const data = bodyData.data;
+    const typeOfData = bodyData.type;
+
+    var response;
+
+    if (typeOfData == "json") {
+        headers["Content-Type"] = "application/json"
+        response = await fetch(targetURL, {
+            method: method,
+            headers: headers,
+            body: JSON.stringify(data)
+        })
+    } else {
+        response = await fetch(targetURL, {
+            method: method,
+            headers: headers,
+            body: JSON.stringify(data)
+        })
+
+    }
+
+    res.status(response.status).send(response.body);
+
 })
 
 export default router
