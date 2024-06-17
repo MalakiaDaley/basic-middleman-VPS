@@ -1,0 +1,12 @@
+{
+  "name": "basic-middleman-vps",
+  "version": "1.0.1",
+  "description": "Basic backend for acting as proxy to return requests previews and sending requests",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT"
+}
